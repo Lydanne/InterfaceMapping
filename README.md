@@ -1,6 +1,6 @@
 # InterfaceMapping
 
-![logo](E:\PJ\项目开发\InterfaceMapping\logo.png)
+![logo](logo.png)
 
 ## 项目介绍
 
