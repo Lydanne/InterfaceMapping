@@ -3,7 +3,8 @@ module.exports = {
         default:{
             name:'default',
             path:'/',
-            token:null
+            token:null,
+            socket:{}
         }
     },
     soc:{}//socket实例

@@ -14,6 +14,9 @@ let origin = (option={host:'',port:'',name:'',token:''})=>{
 
 
 
+
+
 module.exports={
-    origin
+    origin,
+    config
 }
