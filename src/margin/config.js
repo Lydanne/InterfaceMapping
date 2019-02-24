@@ -1,4 +1,5 @@
 module.exports={
-    soc:{}
+    soc:{},
     //连接实例
+    map:[]
 }
