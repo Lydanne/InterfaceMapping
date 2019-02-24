@@ -1,5 +1,5 @@
 {
-  "name": "centre",
+  "name": "margin",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -10,9 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "socket.io": "^2.2.0"
-  },
-  "dependencies": {
-    "express": "^4.16.4"
+    "socket.io-client": "^2.2.0"
   }
 }
