@@ -39,10 +39,6 @@ let createRoute = (option = { name: null, token: null }) => {
 
         })
         
-        socket.on('msg',(data)=>{
-            console.log(data);
-            
-        })
         console.log(socket.id + '建立连接');
 
     })

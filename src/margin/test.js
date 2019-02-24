@@ -1,0 +1,2 @@
+const im = require('./main');
+
