@@ -12,6 +12,12 @@
 
 只需要几步即可使用InterfaceMapping，并且与express语法十分相似。
 
+
+
+[点击这里快速上手]: ./src/README.md
+
+
+
 ### 轻量
 
 整个代码很小
