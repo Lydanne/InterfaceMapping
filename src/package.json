@@ -1,6 +1,6 @@
 {
   "name": "interfacemapping",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "类似于内网穿透",
   "main": "./centre/main.js",
   "scripts": {

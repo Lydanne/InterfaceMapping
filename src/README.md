@@ -3,7 +3,7 @@
 ## 安装
 
 ```bash
-npm install -S InterfaceMapping
+npm install -S interfacemapping
 #安装最新版InterfaceMapping
 ```
 
@@ -16,7 +16,7 @@ npm install -S InterfaceMapping
 ```js
 const express = require('express');
 const http = require('http');
-const im = require('InterfaceMapping');
+const im = require('interfacemapping');
 
 let app = express();
 let server = http.Server(app);
@@ -37,7 +37,7 @@ im.mapping(im.createRoute({name:'a',token:'1234'}));
   边缘服务器可以是公网的也可以是内网的，下面是代码说明。
 
 ```js
-const im = require('InterfaceMapping/margin');
+const im = require('interfacemapping-margin');
 
 im.origin({
     //远程连接
