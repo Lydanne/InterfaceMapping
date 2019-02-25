@@ -12,18 +12,22 @@ let origin = (option={host:'',port:'',name:'',token:''})=>{
     config.origin = option;
     config.soc = io(`${option.host}:${option.port}/${option.name}?token=${option.token}`);
     //连接远程
+    config.soc.on('reqMapping',()=>{
+        mapping();
+    })
 }
 
 let get = (api,callback,option={maxRequest:null})=>{
     api = `/${config.origin.name}${api}`;
-    config.map.push({
+    config.interface.push({
         type:'get',
         api,
-        maxRequest:option
+        option
     });
 
     config.soc.on(api,(query,ret)=>{
-        console.log(query);
+        let req = {};
+        let res = {};
         req.query = query;
         res.send = (data)=>{
             ret(data);
@@ -35,14 +39,15 @@ let get = (api,callback,option={maxRequest:null})=>{
 
 let post = (api,callback,option={maxRequest:null})=>{
     api = `/${config.origin.name}${api}`;
-    config.map.push({
+    config.interface.push({
         type:'post',
         api,
-        maxRequest:option
+        option
     });
 
     config.soc.on(api,(query,ret)=>{
-        console.log(query);
+        let req = {};
+        let res = {};
         req.query = query;
         res.send = (data)=>{
             ret(data);
@@ -52,9 +57,14 @@ let post = (api,callback,option={maxRequest:null})=>{
     })
 }
 
+let mapping = ()=>{
+    config.soc.emit('mapping',config.interface);
+}
+
 module.exports={
     origin,
     config,
     get,
-    post
+    post,
+    mapping
 }

@@ -9,6 +9,6 @@ server.listen(3000);
 
 im.service(app,server);
     
-im.map(im.createRoute({name:'a',token:'1234'}));
+im.mapping(im.createRoute({name:'a',token:'1234'}));
 
 

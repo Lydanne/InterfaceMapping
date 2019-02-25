@@ -8,9 +8,13 @@ im.origin({
 });
 
 im.get('/test',(req,res)=>{
+    console.log(req);
 
+    res.send({success:1,mag:"11223344"});    
 });
 
 im.post('/test',(req,res)=>{
 
 });
+
+im.mapping();
