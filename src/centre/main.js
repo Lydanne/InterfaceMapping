@@ -25,6 +25,8 @@ let createRoute = (option = { name: null, token: null }) => {
     return new Promise(resolve => {
         option.path = '/' + option.name;
         //通过option.name生成option.path
+        option.linking = 0;
+        //当前路由连接数
         config.routes[option.name] = option;
         //将路由信息写入config.routes
         let soc = config.soc;
@@ -40,11 +42,13 @@ let createRoute = (option = { name: null, token: null }) => {
             let query = socket.handshake.query;
             //传值数据
             //console.log(query);
-            if (query.token == token) {
+            if (query.token == token && item.linking==0) {
                 //登录验证成功
+                item.linking ++;
+                //连接数加1
                 return next();//继续执行
             }
-            console.error('用户验证错误');
+            console.error('建立连接失败');
             socket.disconnect();
 
         });
@@ -53,21 +57,25 @@ let createRoute = (option = { name: null, token: null }) => {
             //监听连接事件
             socket.on('disconnect', () => {
                 console.log(item.name + '断开连接');
-
+                item.linking--;
+                //连接数
             })
 
             item.id = socket.id;
             //将id存在config
 
             socket.on('mapping', (interface) => {
+            //监听mapping事件，这个事件用用于获取映射方法
                 config.routes[item.name].interface = interface;
+                //将方法放在对应的routes
                 socket.name = item.name;
+                //用于找到是那个路由
                 //console.log(interface);
                 
                 resolve(socket);//通过primise返回已经连接的socket
             })
             
-            socket.emit('reqMapping');
+            socket.emit('reqMapping');//请求映射
             console.log(item.name+ '建立连接');
         })
     });

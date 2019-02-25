@@ -10,23 +10,40 @@
 </head>
 
 <body>
+    <button onclick="test1()">测试1</button><button onclick="test2()">测试2</button>
     <script>
-        setTimeout(() => {
+        let test1 = () => {
             let i,j=0;
 
         for (i = 0; i < 3000; i++) {
             
             $.ajax({
                 type: "get",
-                url: "/a/test",
-                data:{a:2},
+                url: "/a/test1",
+                data:{a:1},
                 success: function (response) {
-                    console.log(response,j++);
+                    console.log(response.mag,j++);
 
                 }
             });
         }
-        }, 1000);
+        }
+        let test2 = () => {
+            let i,j=0;
+
+        for (i = 0; i < 3000; i++) {
+            
+            $.ajax({
+                type: "get",
+                url: "/a/test2",
+                data:{a:2},
+                success: function (response) {
+                    console.log(response.mag,j++);
+
+                }
+            });
+        }
+        }
         
     </script>
 </body>

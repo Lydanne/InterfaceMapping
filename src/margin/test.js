@@ -7,14 +7,18 @@ im.origin({
     token:'1234'
 });
 
-im.get('/test',(req,res)=>{
-    console.log(req);
+im.get('/test1',(req,res)=>{
+    //console.log(req);
 
-    res.send({success:1,mag:"11223344"});    
+    res.send({success:1,mag:req.query});    
 });
 
-im.post('/test',(req,res)=>{
+im.get('/test2',(req,res)=>{
+    res.send({success:1,mag:req.query}); 
+});
 
+im.get('/test3',(req,res)=>{
+    res.send({success:1,mag:req.query}); 
 });
 
 im.mapping();
