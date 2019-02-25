@@ -1,12 +1,13 @@
 {
-  "name": "centre",
+  "name": "interfacemapping-centre",
+  "version": "1.0.1",
   "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "mark",
   "license": "ISC",
   "devDependencies": {
     "socket.io": "^2.2.0"
