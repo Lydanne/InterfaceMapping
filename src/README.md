@@ -3,6 +3,9 @@
 ## 安装
 
 ```bash
+npm install -S express
+npm install -S socket.io
+#安装依赖
 npm install -S interfacemapping-centre
 #安装中心服务
 npm install -S interfacemapping-margin
