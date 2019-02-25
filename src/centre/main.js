@@ -41,14 +41,15 @@ let createRoute = (option = { name: null, token: null }) => {
             //验证连接
             let query = socket.handshake.query;
             //传值数据
-            //console.log(query);
+            console.log(`${new Date().toLocaleString()} || 用户iD:${socket.id}尝试建立连接`);
             if (query.token == token && item.linking==0) {
                 //登录验证成功
                 item.linking ++;
                 //连接数加1
+                console.log(`${new Date().toLocaleString()} || 用户iD:${socket.id}建立连接成功`);
                 return next();//继续执行
             }
-            console.error('建立连接失败');
+            console.error(`${new Date().toLocaleString()} || 用户iD:${socket.id}建立连接失败`);
             socket.disconnect();
 
         });
@@ -56,7 +57,7 @@ let createRoute = (option = { name: null, token: null }) => {
         Route[item.name].on('connection', (socket) => {
             //监听连接事件
             socket.on('disconnect', () => {
-                console.log(item.name + '断开连接');
+                console.error(`${new Date().toLocaleString()} || 用户iD:${socket.id}断开连接`);
                 item.linking--;
                 //连接数
             })
@@ -76,31 +77,44 @@ let createRoute = (option = { name: null, token: null }) => {
             })
             
             socket.emit('reqMapping');//请求映射
-            console.log(item.name+ '建立连接');
         })
     });
 }
 /**
  * 接口映射
- * @param {*} app express实例化对象
+ * @param {*} socket 当前连接对象
  */
 let mapping = async (socket) => {
     let app = config.app;
+    //获取express实例化后的对象
     socket = await socket;
+    //等待socket实例
     let interface = config.routes[socket.name].interface;
-
+    //获取api接口列表
     //console.log(interface);
     
     for(let i = 0; i<interface.length;i++){
+        //循环创建api接口
+        interface[i].linking = 0;
+        //当前连接人数
         app[interface[i].type](interface[i].api, (req, res) => {
-            let request = {};
-            request.query = req.query;
-            request.body = req.body;
-            request.headers = req.headers;
+            if(interface[i].linking>interface[i].option.maxRequest && interface[i].option.maxRequest){
+                //限制访问
+                res.send({stateCode:-1,msg:'服务器忙'}).end();
+            }else{
+                interface[i].linking++;
+                let request = {};
+                request.query = req.query;
+                request.body = req.body;
+                request.headers = req.headers;
+                //express方法映射
 
-            socket.emit(interface[i].api, request, (data) => {
-                res.send(data).end();
-            });
+                socket.emit(interface[i].api, request, (data) => {
+                    res.send(data).end();
+                    interface[i].linking--;
+                });
+            }
+            
         });
     }
     

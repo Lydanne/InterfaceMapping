@@ -11,23 +11,23 @@
 
 <body>
     <script>
-        setTimeout(() => {
-            let i,j=0;
+        setInterval(() => {
+            let i, j = 0;
 
-        for (i = 0; i < 3000; i++) {
-            
-            $.ajax({
-                type: "get",
-                url: "/a/test1",
-                data:{a:1},
-                success: function (response) {
-                    console.log(response.mag,j++);
+            for (i = 0; i < 3000; i++) {
 
-                }
-            });
-        }
+                $.ajax({
+                    type: "get",
+                    url: "/a/test1",
+                    data: { a: 1 },
+                    success: function (response) {
+                        console.log(response.mag, j++);
+
+                    }
+                });
+            }
         }, 1000);
-        
+
     </script>
 </body>
 

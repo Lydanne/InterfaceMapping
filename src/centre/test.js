@@ -11,4 +11,4 @@ im.service(app,server);
     
 im.mapping(im.createRoute({name:'a',token:'1234'}));
 
-
+console.log(im.config);
