@@ -1,8 +1,8 @@
 {
   "name": "interfacemapping",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "类似于内网穿透",
-  "main": "./centre/main.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

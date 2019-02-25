@@ -3,8 +3,10 @@
 ## 安装
 
 ```bash
-npm install -S interfacemapping
-#安装最新版InterfaceMapping
+npm install -S interfacemapping-centre
+#安装中心服务
+npm install -S interfacemapping-margin
+#安装边缘服务
 ```
 
 ## 使用
@@ -16,7 +18,7 @@ npm install -S interfacemapping
 ```js
 const express = require('express');
 const http = require('http');
-const im = require('interfacemapping');
+const im = require('interfacemapping-centre');
 
 let app = express();
 let server = http.Server(app);
