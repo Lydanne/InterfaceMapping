@@ -85,10 +85,12 @@ let mapping = async (socket) => {
     
     for(let i = 0; i<interface.length;i++){
         app[interface[i].type](interface[i].api, (req, res) => {
-            let query = req.query;
-            console.log(query);
+            let request = {};
+            request.query = req.query;
+            request.body = req.body;
+            request.headers = req.headers;
 
-            socket.emit(interface[i].api, query, (data) => {
+            socket.emit(interface[i].api, request, (data) => {
                 res.send(data).end();
             });
         });

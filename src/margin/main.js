@@ -25,12 +25,12 @@ let get = (api,callback,option={maxRequest:null})=>{
         option
     });
 
-    config.soc.on(api,(query,ret)=>{
+    config.soc.on(api,(request,response)=>{
         let req = {};
         let res = {};
-        req.query = query;
+        req = request;
         res.send = (data)=>{
-            ret(data);
+            response(data);
         }
 
         callback(req,res);
@@ -45,12 +45,12 @@ let post = (api,callback,option={maxRequest:null})=>{
         option
     });
 
-    config.soc.on(api,(query,ret)=>{
+    config.soc.on(api,(request,response)=>{
         let req = {};
         let res = {};
-        req.query = query;
+        req = request;
         res.send = (data)=>{
-            ret(data);
+            response(data);
         }
 
         callback(req,res);
