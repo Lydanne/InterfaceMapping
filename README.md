@@ -12,15 +12,11 @@
 
 只需要几步即可使用InterfaceMapping，并且与express语法十分相似。
 
-
-
-[点击这里快速上手]: ./src/README.md
-
-
+[**点击这里快速上手**](./src/README.md)
 
 ### 轻量
 
-整个代码很小
+整个代码很小 <=10KB
 
 ### 开源
 
@@ -31,7 +27,6 @@
 - src 项目源码
   - centre 中心服务器代码 
   - margin 边缘服务器代码
-- test 测试文件
 
 ## 结构说明
 
