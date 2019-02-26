@@ -60,6 +60,7 @@ let createRoute = (option = { name: null, token: null }) => {
                 console.error(`${new Date().toLocaleString()} || 用户iD:${socket.id}断开连接`);
                 item.linking--;
                 //连接数
+                exit(-1);//断开连接
             })
 
             item.id = socket.id;
